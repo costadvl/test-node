@@ -1,4 +1,4 @@
-const EventEmitter = require('events')
+const EventEmitter = require('events');
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -12,12 +12,12 @@ const server = require('./server')(client);
 server.on('response', (response) => {
     console.log('\x1Bc');
     console.log(`Response: ${response}`);
-    console.log('\n\>')
+    console.log('\n>');
     
 });
 
 let command, args;
 rl.on('line', (input) => {
     [command, ...args] = input.split(' ');
-    client.emit('command', command, args)
+    client.emit('command', command, args);
 });
