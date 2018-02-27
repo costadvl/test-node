@@ -1,4 +1,4 @@
-const fs = rquire('fs');
+const fs = require('fs');
 const path = require('path');
 
 const dirname = path.join(__dirname, 'files');
@@ -20,5 +20,5 @@ fs.watch(dirname, (eventType, filename) => {
         return;
     }
     logWithTime(`${filename} was changed`);
-})
+});
 
