@@ -10,7 +10,7 @@ class WithTime extends EventEmmiter {
             }
             this.emit('data', data);
             console.timeEnd('execute');
-        })
+        });
     }
 }
 
@@ -25,7 +25,7 @@ withTime.on('data', (data)=>{
 withTime.prependListener('error', (err) => {
     console.error(`Error Log: ${err}`);
     process.exit(1);
-})
+});
 
 // withTime.execute(fs.readFile, '');
 withTime.execute(fs.readFile, __filename);
