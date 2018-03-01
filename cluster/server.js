@@ -1,9 +1,16 @@
 const http = require('http');
 const pid = process.pid;
 
+let usersCount;
+
 http.createServer((req, res) => {
     for (let i=0; i<1e7; i++);
-    res.end(`handled by process ${pid}`);
+    res.write(`handled by process ${pid}\n`);
+    res.end(`Users: ${usersCount}`);
 }).listen(8080, () => {
     console.log(`Started process ${pid}`);
+});
+
+process.on('message', msg => {
+    usersCount = msg.usersCount;
 });
